@@ -1,0 +1,562 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_blank" name="shell-type"><title>ROMMATE</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary": "#ffffff", "on-error-container": "#93000a", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#c7c6c6", "outline-variant": "#cfc4c5", "error-container": "#ffdad6", "on-tertiary-container": "#848484", "primary-container": "#1b1b1b", "inverse-surface": "#303030", "secondary": "#5e5e5e", "inverse-on-surface": "#f3f0f0", "on-secondary": "#ffffff", "surface-tint": "#5e5e5e", "surface-container-low": "#f6f3f2", "secondary-container": "#e1dfdf", "surface-bright": "#fbf9f8", "primary-fixed": "#e2e2e2", "on-primary-fixed-variant": "#474747", "on-secondary-fixed": "#1b1c1c", "primary": "#000000", "surface": "#fbf9f8", "on-secondary-fixed-variant": "#464747", "on-primary-container": "#848484", "surface-container": "#f0eded", "background": "#fbf9f8", "on-background": "#1b1c1c", "on-surface-variant": "#4c4546", "on-primary-fixed": "#1b1b1b", "on-tertiary-fixed-variant": "#474747", "tertiary": "#000000", "surface-variant": "#e4e2e1", "tertiary-container": "#1b1b1b", "tertiary-fixed": "#e2e2e2", "secondary-fixed": "#e4e2e2", "surface-container-highest": "#e4e2e1", "on-surface": "#1b1c1c", "on-error": "#ffffff", "outline": "#7e7576", "surface-container-high": "#eae8e7", "surface-dim": "#dcd9d9", "tertiary-fixed-dim": "#c6c6c6", "error": "#ba1a1a", "inverse-primary": "#c6c6c6", "on-tertiary-fixed": "#1b1b1b", "on-tertiary": "#ffffff", "primary-fixed-dim": "#c6c6c6", "on-secondary-container": "#626262" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-md": "16px", "space-xs": "4px", "gutter": "16px", "space-xl": "32px", "space-sm": "8px", "space-lg": "24px", "margin": "16px" }, fontFamily: { "headline-sm": ["Inter"], "display": ["Inter"], "headline-md": ["Inter"], "label-lg": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "code-annotation": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"], "label-sm": ["Inter"] }, fontSize: { "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "display": ["30px", { "lineHeight": "36px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "headline-lg": ["24px", { "lineHeight": "30px", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "code-annotation": ["10px", { "lineHeight": "12px", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }] } } } };</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen" style="background-color: rgb(248, 247, 244); color: rgb(43, 45, 66); font-family: Inter, sans-serif;"><main class="flex-1 w-full bg-surface pt-safe pb-safe px-margin max-w-[390px] mx-auto flex flex-col"><div class="flex flex-col w-full pb-12"><!-- Top Header Area -->
+<header class="w-full flex items-center justify-between pb-3 pt-2">
+<div class="w-10 h-10 rounded-2xl bg-[#E26D5C]/10 flex items-center justify-center text-[#E26D5C] shadow-sm">
+<span class="material-symbols-outlined text-[22px]">view_quilt</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-[20px] font-bold text-[#2B2D42] tracking-wider uppercase" style="font-family: 'Poppins', sans-serif;">ROoMMATE</span>
+<span class="text-[11px] font-semibold text-[#E26D5C] tracking-wide bg-[#E26D5C]/10 px-2 py-0.5 rounded-full">★ SMART MATCHING</span>
+</div>
+<!-- Friendly profile avatar with warm ring & online badge -->
+<div class="relative w-10 h-10 rounded-full bg-white border-2 border-[#E26D5C] flex items-center justify-center shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-[#E26D5C] text-[22px]">face_6</span>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-[#2D6A4F] border-2 border-white rounded-full"></span>
+</div>
+</header>
+<!-- Sub-header Micro-copy Tag -->
+
+<!-- FEATURE SECTION: FORMA GRUPPO PRE-AFFITTO -->
+<section class="mt-3.5 rounded-3xl bg-white p-4 relative shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-[#E26D5C]/5 rounded-full blur-xl pointer-events-none"></div>
+<!-- Top badge -->
+<div class="flex items-center justify-between mb-2">
+<div class="inline-flex items-center gap-1.5 bg-[#E26D5C]/15 text-[#E26D5C] px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wide" style="font-family: 'Poppins', sans-serif;">
+<span class="material-symbols-outlined text-[14px]">groups</span>
+<span class="">CANDIDATURA di gruppo</span>
+</div>
+<span class="text-[11px] font-semibold text-[#2D6A4F] bg-[#E3EFE9] px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#2D6A4F]"></span> Popolare
+    </span>
+</div>
+<h2 class="text-[16px] font-bold text-[#2B2D42] mt-1 leading-snug" style="font-family: 'Poppins', sans-serif;">
+    🤝 Forma un Gruppo Solido Prima di Cercare Casa
+  </h2>
+<p class="text-[12px] text-[#6C757D] mt-1.5 leading-relaxed">
+    Trova 2, 3 o 4 persone affini e presentatevi uniti e strutturati ai proprietari immobiliari per moltiplicare le chance di selezione contrattuale.
+  </p>
+<!-- Group Size Segmented Selector -->
+<div class="mt-3.5">
+<label class="text-[11px] font-bold text-[#8D99AE] uppercase tracking-wider block mb-1.5" style="font-family: 'Poppins', sans-serif;">
+      Dimensione obiettivo gruppo:
+    </label>
+<div class="grid grid-cols-3 gap-2 p-1 bg-[#F8F7F4] rounded-2xl border border-[#EBE8E1]" id="group-size-selector" role="radiogroup"><button class="group-btn h-10 rounded-xl font-bold text-[12px] flex items-center justify-center transition-all bg-[#E26D5C] text-white shadow-xs" onclick="selectGroupSize(this, 2)" style="font-family: Poppins, sans-serif;" type="button">2 Persone</button><button class="group-btn h-10 rounded-xl font-bold text-[12px] flex items-center justify-center transition-all bg-white text-[#555B6E] border border-[#EBE8E1] hover:bg-[#FFF9F8]" onclick="selectGroupSize(this, 3)" style="font-family: Poppins, sans-serif;" type="button">3 Persone</button><button class="group-btn h-10 rounded-xl font-bold text-[12px] flex items-center justify-center transition-all bg-white text-[#555B6E] border border-[#EBE8E1] hover:bg-[#FFF9F8]" onclick="selectGroupSize(this, 4)" style="font-family: Poppins, sans-serif;" type="button">4 Persone</button></div>
+</div>
+<!-- Mini Preview Slots -->
+<div class="mt-3.5 pt-3 border-t border-[#F0ECE6] flex items-center justify-between">
+<span class="text-[11px] font-bold text-[#8D99AE] uppercase tracking-wider" style="font-family: 'Poppins', sans-serif;">COMPOSIZIONE SLOT GRUPPO:</span>
+<div class="flex items-center gap-2" id="slot-preview-container"><div class="w-8 h-8 rounded-full bg-[#E26D5C] text-white flex items-center justify-center font-bold text-[11px] shadow-xs">TU</div><div class="w-8 h-8 rounded-full border-2 border-dashed border-[#E26D5C]/40 flex items-center justify-center bg-[#FFF5F3] text-[#E26D5C]"><span class="material-symbols-outlined text-[16px]">add</span></div></div>
+</div>
+<!-- Action Button for Mode -->
+<button class="mt-3.5 w-full h-11 rounded-full bg-[#E26D5C] text-white font-bold text-[13px] tracking-wide flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(226,109,92,0.3)] hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer" style="font-family: 'Poppins', sans-serif;" type="button">
+<span class="material-symbols-outlined text-[18px]">group_add</span>
+    ATTIVA MODALITÀ GRUPPO / UNISCITI
+  </button>
+</section>
+<!-- MAIN TEST SECTION (WIZARD SINGLE CARD STEP-BY-STEP) -->
+<section class="mt-4 flex flex-col w-full">
+<!-- Header of Questionnaire -->
+<div class="pb-2.5">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[11px] font-bold uppercase tracking-wider text-[#8D99AE]" style="font-family: 'Poppins', sans-serif;">FILTRO ANTAGONISTA / STEP SINGOLO</span>
+<span class="text-[11px] font-bold bg-[#2B2D42] text-white px-2.5 py-0.5 rounded-full" id="answered-counter" style="font-family: 'Poppins', sans-serif;">0 / 8 Risposte</span>
+</div>
+<h1 class="text-[21px] font-extrabold text-[#2B2D42] leading-tight" style="font-family: 'Poppins', sans-serif;">
+      Test di Compatibilità Convivenza
+    </h1>
+<p class="text-[12px] text-[#6C757D] mt-1 leading-relaxed">
+      Rispondi a ciascun quesito per calcolare l'indice di affinità ed evitare conflitti quotidiani.
+    </p>
+</div>
+<!-- Step Progress Information & Indicators -->
+<div class="mt-2 bg-white rounded-3xl flex flex-col gap-3 shadow-[0_4px_20px_rgba(226,109,92,0.06)] border border-[#EFECE6] p-4 relative overflow-hidden"><div class="flex items-center justify-between gap-3 mb-1"><div class="flex items-center gap-3"><div class="w-11 h-11 rounded-2xl bg-[#FFF5F3] border border-[#E26D5C]/20 flex items-center justify-center text-[#E26D5C] shadow-xs flex-shrink-0"><span class="material-symbols-outlined text-[22px]">quiz</span></div><div class="flex flex-col"><div class="flex items-center gap-2"><span class="text-[15px] text-[#2B2D42] font-bold tracking-tight" id="step-label" style="font-family: 'Poppins', sans-serif;">Domanda 1 di 8</span><span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-[#E26D5C]/15 text-[#E26D5C] tracking-wide" id="step-index-hint" style="font-family: 'Poppins', sans-serif;">STEP 1/8</span></div><span class="text-[11px] text-[#6C757D] font-medium flex items-center gap-1 mt-0.5"><span class="">✨</span> Pochi secondi per trovare l'intesa</span></div></div><div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E3EFE9] text-[#2D6A4F] border border-[#2D6A4F]/20 shadow-xs flex-shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-[#2D6A4F]"></span><span class="text-[11px] font-bold tracking-wide" id="question-state-badge" style="font-family: 'Poppins', sans-serif;">DA RISPONDERE</span></div></div><div class="flex items-center gap-1.5 w-full pt-2"><div class="h-2 flex-1 rounded-full bg-[#E26D5C] transition-all cursor-pointer" id="prog-1" onclick="goToStep(1)"></div><div class="h-2 flex-1 rounded-full bg-[#EFECE6] transition-all cursor-pointer" id="prog-2" onclick="goToStep(2)"></div><div class="h-2 flex-1 rounded-full bg-[#EFECE6] transition-all cursor-pointer" id="prog-3" onclick="goToStep(3)"></div><div class="h-2 flex-1 rounded-full bg-[#EFECE6] transition-all cursor-pointer" id="prog-4" onclick="goToStep(4)"></div><div class="h-2 flex-1 rounded-full bg-[#EFECE6] transition-all cursor-pointer" id="prog-5" onclick="goToStep(5)"></div><div class="h-2 flex-1 rounded-full bg-[#EFECE6] transition-all cursor-pointer" id="prog-6" onclick="goToStep(6)"></div><div class="h-2 flex-1 rounded-full bg-[#EFECE6] transition-all cursor-pointer" id="prog-7" onclick="goToStep(7)"></div><div class="h-2 flex-1 rounded-full bg-[#EFECE6] transition-all cursor-pointer" id="prog-8" onclick="goToStep(8)"></div></div></div>
+<!-- Cute Floating Compatibility Tooltip Pop-up (Friendly & Cozy touch) -->
+
+<!-- SINGLE CARD CONTAINER (WIZARD STEPS) -->
+<div class="mt-2.5" id="questions-wrapper">
+<!-- DOMANDA 1 -->
+<fieldset class="rounded-3xl bg-white p-4 question-card shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] relative" data-q="1" id="qcard-1">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F3] text-[#E26D5C] text-[11px] font-bold uppercase tracking-wider mb-2" style="font-family: 'Poppins', sans-serif;">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E26D5C]"></span>
+        D1. Piatti &amp; Lavello
+      </div>
+<p class="text-[15px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">
+        Come gestisci i piatti e le stoviglie sporche dopo pranzo/cena?
+      </p>
+<div class="mt-3.5 flex flex-col gap-2.5">
+<!-- Option A -->
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(1, 'A', this)">
+<input class="hidden" name="q1" type="radio" value="A">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Regola immediata (Zero accumulo)</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">I piatti si lavano subito dopo mangiato, lavello sempre categoricamente vuoto.</span>
+</div>
+</label>
+<!-- Option B -->
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(1, 'B', this)">
+<input class="hidden" name="q1" type="radio" value="B">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Tolleranza oraria / A lotti</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Possono restare nel lavello fino a sera o al giorno dopo; si lava in un'unica sessione.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- DOMANDA 2 -->
+<fieldset class="rounded-3xl bg-white p-4 question-card shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] relative hidden" data-q="2" id="qcard-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F3] text-[#E26D5C] text-[11px] font-bold uppercase tracking-wider mb-2" style="font-family: 'Poppins', sans-serif;">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E26D5C]"></span>
+        D2. Orari e Ritmi Notturni
+      </div>
+<p class="text-[15px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">
+        Qual è il tuo cronotipo naturale durante la settimana?
+      </p>
+<div class="mt-3.5 flex flex-col gap-2.5">
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(2, 'A', this)">
+<input class="hidden" name="q2" type="radio" value="A">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Early Bird / Mattiniero</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">A letto entro le 23:30, silenzio rigoroso la mattina presto per sveglia anticipata.</span>
+</div>
+</label>
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(2, 'B', this)">
+<input class="hidden" name="q2" type="radio" value="B">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Night Owl / Nottambulo</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Vita serale attiva, cena tardi, studio/lavoro fino a notte fonda con orari flessibili.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- DOMANDA 3 -->
+<fieldset class="rounded-3xl bg-white p-4 question-card shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] relative hidden" data-q="3" id="qcard-3">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F3] text-[#E26D5C] text-[11px] font-bold uppercase tracking-wider mb-2" style="font-family: 'Poppins', sans-serif;">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E26D5C]"></span>
+        D3. Ospiti e Feste a Casa
+      </div>
+<p class="text-[15px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">
+        Che tipo di apertura sociale pretendi per gli spazi comuni?
+      </p>
+<div class="mt-3.5 flex flex-col gap-2.5">
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(3, 'A', this)">
+<input class="hidden" name="q3" type="radio" value="A">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Santuario Protetto</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">La casa è solo per riposare: ospiti esterni previo consenso unanime e zero feste.</span>
+</div>
+</label>
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(3, 'B', this)">
+<input class="hidden" name="q3" type="radio" value="B">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Open House Conviviale</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Amici, cene spontanee, musica e frequenti ritrovi anche infrasettimanali.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- DOMANDA 4 -->
+<fieldset class="rounded-3xl bg-white p-4 question-card shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] relative hidden" data-q="4" id="qcard-4">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F3] text-[#E26D5C] text-[11px] font-bold uppercase tracking-wider mb-2" style="font-family: 'Poppins', sans-serif;">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E26D5C]"></span>
+        D4. Pulizie e Turni
+      </div>
+<p class="text-[15px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">
+        Metodologia per la pulizia di bagno, cucina e pavimenti:
+      </p>
+<div class="mt-3.5 flex flex-col gap-2.5">
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(4, 'A', this)">
+<input class="hidden" name="q4" type="radio" value="A">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Tabellone e Turni Rigidi</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Ruoli settimanali scritti, orari stabiliti e verifica rigorosa di adempimento.</span>
+</div>
+</label>
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(4, 'B', this)">
+<input class="hidden" name="q4" type="radio" value="B">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Buon Senso &amp; Flessibilità</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Ci si regola a vista quando si nota sporco o polvere, senza calendari forzati.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- DOMANDA 5 -->
+<fieldset class="rounded-3xl bg-white p-4 question-card shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] relative hidden" data-q="5" id="qcard-5">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F3] text-[#E26D5C] text-[11px] font-bold uppercase tracking-wider mb-2" style="font-family: 'Poppins', sans-serif;">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E26D5C]"></span>
+        D5. Spesa e Condivisione
+      </div>
+<p class="text-[15px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">
+        Organizzazione del frigorifero e degli alimenti:
+      </p>
+<div class="mt-3.5 flex flex-col gap-2.5">
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(5, 'A', this)">
+<input class="hidden" name="q5" type="radio" value="A">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Separazione Totale</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Ciascuno ha la propria mensola contrassegnata; zero condivisione cibo né spezie.</span>
+</div>
+</label>
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(5, 'B', this)">
+<input class="hidden" name="q5" type="radio" value="B">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Dispensa Condivisa &amp; Cene Comuni</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Cassa comune per olio, sale, pasta, colazione e piatti cucinati collettivamente.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- DOMANDA 6 -->
+<fieldset class="rounded-3xl bg-white p-4 question-card shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] relative hidden" data-q="6" id="qcard-6">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F3] text-[#E26D5C] text-[11px] font-bold uppercase tracking-wider mb-2" style="font-family: 'Poppins', sans-serif;">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E26D5C]"></span>
+        D6. Studio / Lavoro da Casa
+      </div>
+<p class="text-[15px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">
+        Qual è l'atmosfera richiesta durante le ore diurne feriali?
+      </p>
+<div class="mt-3.5 flex flex-col gap-2.5">
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(6, 'A', this)">
+<input class="hidden" name="q6" type="radio" value="A">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Silenzio Studio / Call Focus</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Massimo isolamento per sessioni esami o smart working intensivo senza distrazioni.</span>
+</div>
+</label>
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(6, 'B', this)">
+<input class="hidden" name="q6" type="radio" value="B">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Ambiente Vivo &amp; Informale</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Musica leggera, pause caffè condivise e libertà di movimento nelle aree comuni.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- DOMANDA 7 -->
+<fieldset class="rounded-3xl bg-white p-4 question-card shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] relative hidden" data-q="7" id="qcard-7">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F3] text-[#E26D5C] text-[11px] font-bold uppercase tracking-wider mb-2" style="font-family: 'Poppins', sans-serif;">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E26D5C]"></span>
+        D7. Riscaldamento &amp; Clima
+      </div>
+<p class="text-[15px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">
+        Come deve essere impostato il termostato per bollette e temperatura?
+      </p>
+<div class="mt-3.5 flex flex-col gap-2.5">
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(7, 'A', this)">
+<input class="hidden" name="q7" type="radio" value="A">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Eco / Risparmio Bolletta</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Maglione caldo in casa, riscaldamento a 19°C max per evitare spese folli.</span>
+</div>
+</label>
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(7, 'B', this)">
+<input class="hidden" name="q7" type="radio" value="B">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Massimo Comfort Termico</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Caldo pieno d'inverno (21°C+) e aria condizionata d'estate; il benessere viene prima.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- DOMANDA 8 -->
+<fieldset class="rounded-3xl bg-white p-4 question-card shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6] relative hidden" data-q="8" id="qcard-8">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF5F3] text-[#E26D5C] text-[11px] font-bold uppercase tracking-wider mb-2" style="font-family: 'Poppins', sans-serif;">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E26D5C]"></span>
+        D8. Partner &amp; Weekend
+      </div>
+<p class="text-[15px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">
+        Frequenza ammessa per fidanzati/e e partner in casa:
+      </p>
+<div class="mt-3.5 flex flex-col gap-2.5">
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(8, 'A', this)">
+<input class="hidden" name="q8" type="radio" value="A">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Limite Presenza Chiaro (Max 1-2 notti)</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Il partner non deve trasformarsi in un coinquilino occulto non pagante.</span>
+</div>
+</label>
+<label class="cursor-pointer rounded-2xl border-2 border-[#EFECE6] p-3.5 flex items-start gap-3 hover:border-[#E26D5C]/40 hover:bg-[#FFF9F8] transition-all option-box bg-white" onclick="pickOption(8, 'B', this)">
+<input class="hidden" name="q8" type="radio" value="B">
+<div class="radio-box w-5 h-5 rounded-full border-2 border-[#DCD7CD] flex-shrink-0 mt-0.5 flex items-center justify-center bg-white transition-all">
+<div class="radio-dot w-2.5 h-2.5 rounded-full bg-[#E26D5C] hidden"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-[13px] font-bold text-[#2B2D42] leading-snug" style="font-family: 'Poppins', sans-serif;">Porte Aperte Senza Limiti</span>
+<span class="text-[11px] text-[#6C757D] mt-0.5 leading-relaxed">Partner benvenuti anche per soggiorni continuativi come inquilini aggiunti.</span>
+</div>
+</label>
+</div>
+</fieldset>
+<!-- QUESTIONNAIRE COMPLETION CARD (SHOWN AT END) -->
+<div class="rounded-3xl bg-white p-5 text-center hidden shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-[#EFECE6]" id="completion-card">
+<div class="w-14 h-14 mx-auto rounded-full bg-[#E3EFE9] flex items-center justify-center text-[#2D6A4F] mb-3 shadow-sm">
+<span class="material-symbols-outlined text-[30px]">done_all</span>
+</div>
+<h3 class="text-[18px] font-bold text-[#2B2D42] uppercase" style="font-family: 'Poppins', sans-serif;">Test Ultimato</h3>
+<p class="text-[13px] text-[#6C757D] mt-1" id="completion-summary-text">
+        Hai risposto a <strong class="text-[#2B2D42]">0 di 8</strong> domande chiave di compatibilità.
+      </p>
+<div class="mt-3 p-3 rounded-2xl bg-[#F8F7F4] border border-[#EBE8E1] text-left">
+<p class="text-[12px] text-[#2B2D42] font-medium leading-relaxed" id="completion-recap-note">
+          Matrice generata con successo. Sei pronto per abbinarti a stanze e coinquilini con tolleranze affini.
+        </p>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 h-11 rounded-full border border-[#DCD7CD] bg-white text-[#555B6E] font-bold text-[12px] uppercase tracking-wider hover:bg-[#F8F7F4] transition-all cursor-pointer" onclick="goToStep(1)" style="font-family: 'Poppins', sans-serif;" type="button">
+          Rivedi Test
+        </button>
+<button class="flex-1 h-11 rounded-full bg-[#E26D5C] text-white font-bold text-[12px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-[0_4px_16px_rgba(226,109,92,0.3)] hover:opacity-95 transition-all cursor-pointer" onclick="validateAndCalculate()" style="font-family: 'Poppins', sans-serif;" type="button">
+<span class="material-symbols-outlined text-[18px]">manage_search</span>
+          Calcola Ora
+        </button>
+</div>
+</div>
+</div>
+<!-- STEP NAVIGATION CONTROLS -->
+<div class="mt-3 flex flex-col gap-2" id="wizard-navigation-panel"><div class="grid grid-cols-2 gap-2.5"><button class="h-11 rounded-full border border-[#DCD7CD] bg-white font-bold text-[12px] uppercase tracking-wider flex items-center justify-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#F8F7F4] text-[#8D99AE] transition-all cursor-pointer shadow-xs" disabled="" id="btn-prev" onclick="navigateStep(-1)" style="font-family: 'Poppins', sans-serif;" type="button"><span class="material-symbols-outlined text-[18px]">arrow_back</span><span class="">PRECEDENTE</span></button><button class="h-11 rounded-full bg-[#E26D5C] text-white font-bold text-[12px] uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-[0_4px_14px_rgba(226,109,92,0.28)] hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer" id="btn-next" onclick="navigateStep(1)" style="font-family: 'Poppins', sans-serif;" type="button"><span id="btn-next-text" class="">AVANTI</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></div><div class="flex items-center justify-center mt-1"><button class="text-[11px] font-semibold text-[#8D99AE] hover:text-[#E26D5C] transition-all flex items-center gap-1 py-1 px-3 rounded-full hover:bg-[#FFF5F3]" onclick="skipCurrentQuestion()" style="font-family: 'Poppins', sans-serif;" type="button"><span class="">Salta quesito</span><span class="material-symbols-outlined text-[14px]">skip_next</span></button></div></div>
+</section>
+<!-- BOTTOM ACTIONS AREA -->
+<section class="mt-5 pt-3.5 border-t border-[#EBE8E1] flex flex-col gap-2.5">
+<!-- Primary CTA Button -->
+<button class="w-full h-12 rounded-full bg-[#E26D5C] text-white font-bold text-[13px] uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(226,109,92,0.35)] hover:opacity-95 active:scale-[0.99] transition-all cursor-pointer" onclick="validateAndCalculate()" style="font-family: 'Poppins', sans-serif;" type="button">
+
+    CALCOLA COMPATIBILITÀ &amp; TROVA COINQUILINI
+  </button>
+<!-- Bottom Status Footer Stamp -->
+<div class="mt-2 flex items-center justify-between text-[10px] font-semibold text-[#8D99AE] px-1" style="font-family: 'Poppins', sans-serif;">
+
+
+</div>
+</section></div>
+<script>
+  let responses = {};
+  let currentStep = 1;
+  const TOTAL_QUESTIONS = 8;
+
+  function selectGroupSize(btn, count) {
+    const allButtons = document.querySelectorAll('.group-btn');
+    allButtons.forEach(b => {
+      b.className = 'group-btn h-10 border border-outline-variant bg-surface-container-lowest text-on-surface font-label-md text-label-md flex items-center justify-center hover:bg-surface-container-low transition-none';
+    });
+    btn.className = 'group-btn h-10 border border-primary bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center transition-none';
+
+    // Update slots visual
+    const container = document.getElementById('slot-preview-container');
+    let slotsHtml = '<div class="w-8 h-8 rounded-full border border-primary bg-primary text-on-primary flex items-center justify-center font-code-annotation text-code-annotation font-semibold">TU</div>';
+    for (let i = 1; i < count; i++) {
+      slotsHtml += '<div class="w-8 h-8 rounded-full border border-dashed border-primary flex items-center justify-center bg-surface-container-low text-primary"><span class="material-symbols-outlined text-[16px]">add</span></div>';
+    }
+    container.innerHTML = slotsHtml;
+  }
+
+  function updateWizardUI() {
+    // Hide all cards
+    for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+      const card = document.getElementById('qcard-' + i);
+      if (card) {
+        if (i === currentStep) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+    }
+
+    const completionCard = document.getElementById('completion-card');
+    const navPanel = document.getElementById('wizard-navigation-panel');
+
+    if (currentStep > TOTAL_QUESTIONS) {
+      // Completed state
+      if (completionCard) completionCard.classList.remove('hidden');
+      if (navPanel) navPanel.classList.add('hidden');
+
+      const totalAnswered = Object.keys(responses).length;
+      document.getElementById('step-label').textContent = 'Test Completato';
+      document.getElementById('question-state-badge').textContent = totalAnswered + '/' + TOTAL_QUESTIONS + ' RISPOSTE';
+      document.getElementById('step-index-hint').textContent = 'STEP FINALE';
+      document.getElementById('completion-summary-text').innerHTML = 'Hai risposto a <strong class="text-on-surface">' + totalAnswered + ' di ' + TOTAL_QUESTIONS + '</strong> domande chiave di compatibilità.';
+    } else {
+      if (completionCard) completionCard.classList.add('hidden');
+      if (navPanel) navPanel.classList.remove('hidden');
+
+      // Update indicators
+      document.getElementById('step-label').textContent = 'Domanda ' + currentStep + ' di ' + TOTAL_QUESTIONS;
+      document.getElementById('step-index-hint').textContent = 'STEP ' + currentStep + '/' + TOTAL_QUESTIONS;
+      
+      const isAnswered = !!responses[currentStep];
+      const stateBadge = document.getElementById('question-state-badge');
+      if (isAnswered) {
+        stateBadge.textContent = 'RISPOSTA REGISTRATA';
+        stateBadge.className = 'font-code-annotation text-code-annotation border border-primary bg-surface-container-highest px-1.5 py-0.5 text-primary font-bold';
+      } else {
+        stateBadge.textContent = 'DA RISPONDERE';
+        stateBadge.className = 'font-code-annotation text-code-annotation border border-outline-variant px-1.5 py-0.5 text-secondary';
+      }
+
+      // Prev button state
+      const btnPrev = document.getElementById('btn-prev');
+      if (currentStep === 1) {
+        btnPrev.disabled = true;
+        btnPrev.classList.remove('border-primary', 'text-primary');
+        btnPrev.classList.add('border-outline-variant', 'text-secondary');
+      } else {
+        btnPrev.disabled = false;
+        btnPrev.classList.remove('border-outline-variant', 'text-secondary');
+        btnPrev.classList.add('border-primary', 'text-primary');
+      }
+
+      // Next button text
+      const nextText = document.getElementById('btn-next-text');
+      if (currentStep === TOTAL_QUESTIONS) {
+        nextText.textContent = isAnswered ? 'Completa' : 'Conferma';
+      } else {
+        nextText.textContent = 'Avanti';
+      }
+    }
+
+    // Refresh progress bars
+    for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+      const progBar = document.getElementById('prog-' + i);
+      if (responses[i]) {
+        progBar.className = 'h-2 flex-1 border border-primary bg-primary';
+      } else if (i === currentStep) {
+        progBar.className = 'h-2 flex-1 border border-primary bg-surface-container-high';
+      } else {
+        progBar.className = 'h-2 flex-1 border border-outline-variant bg-surface-container-low';
+      }
+    }
+
+    // Answer counter
+    const totalAnswered = Object.keys(responses).length;
+    document.getElementById('answered-counter').textContent = totalAnswered + ' / ' + TOTAL_QUESTIONS + ' Risposte';
+  }
+
+  function pickOption(questionNum, optionKey, containerLabel) {
+    const fieldset = containerLabel.closest('fieldset');
+    const allOptions = fieldset.querySelectorAll('.option-box');
+    
+    allOptions.forEach(opt => {
+      opt.classList.remove('border-primary', 'bg-surface-container-low');
+      opt.classList.add('border-outline-variant', 'bg-surface-container-lowest');
+      const dot = opt.querySelector('.radio-dot');
+      if (dot) dot.classList.add('hidden');
+    });
+
+    // Mark current selected
+    containerLabel.classList.remove('border-outline-variant', 'bg-surface-container-lowest');
+    containerLabel.classList.add('border-primary', 'bg-surface-container-low');
+    const dot = containerLabel.querySelector('.radio-dot');
+    if (dot) dot.classList.remove('hidden');
+
+    // Register value
+    responses[questionNum] = optionKey;
+    updateWizardUI();
+
+    // Auto advance smoothly after short visual confirmation
+    setTimeout(() => {
+      if (currentStep === questionNum && currentStep < TOTAL_QUESTIONS) {
+        currentStep++;
+        updateWizardUI();
+      } else if (currentStep === TOTAL_QUESTIONS) {
+        currentStep = TOTAL_QUESTIONS + 1;
+        updateWizardUI();
+      }
+    }, 280);
+  }
+
+  function navigateStep(direction) {
+    const targetStep = currentStep + direction;
+    if (targetStep >= 1 && targetStep <= TOTAL_QUESTIONS + 1) {
+      currentStep = targetStep;
+      updateWizardUI();
+    }
+  }
+
+  function skipCurrentQuestion() {
+    if (currentStep <= TOTAL_QUESTIONS) {
+      currentStep++;
+      updateWizardUI();
+    }
+  }
+
+  function goToStep(stepNumber) {
+    currentStep = stepNumber;
+    updateWizardUI();
+  }
+
+  function validateAndCalculate() {
+    const totalAnswered = Object.keys(responses).length;
+    if (totalAnswered < TOTAL_QUESTIONS) {
+      const confirmed = confirm('[AVVISO WIREFRAME]: Hai risposto solo a ' + totalAnswered + ' su ' + TOTAL_QUESTIONS + ' domande. Vuoi comunque procedere con il calcolo parziale di compatibilità?');
+      if (!confirmed) return;
+    }
+    alert('[SUCCESSO WIREFRAME]: ' + totalAnswered + '/' + TOTAL_QUESTIONS + ' Risposte registrate! Profilo di convivenza sintetizzato. Reindirizzamento a lista coinquilini compatibili e gruppi pre-affitto...');
+  }
+
+  function saveDraftNotification() {
+    const count = Object.keys(responses).length;
+    alert('[NOTIFICA BOZZA]: Stato test salvato in memoria locale (' + count + '/' + TOTAL_QUESTIONS + ' completate al passo ' + Math.min(currentStep, TOTAL_QUESTIONS) + '). Potrai riprendere il questionario in qualsiasi momento.');
+  }
+
+  // Initial state setup
+  updateWizardUI();
+</script></main>
+
+
+
+
+
+
+
+
+</body></html>

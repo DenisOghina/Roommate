@@ -1,0 +1,1048 @@
+/* ==========================================================================
+   === 1. VARIABILI CSS E RESET BASE ===
+   Definiamo i colori, i caratteri e le spaziature riutilizzabili nell'app.
+   ========================================================================== */
+:root {
+  /* Tavolozza Colori dal Design System Roommate */
+  --color-bg: #F8F7F4;               /* Sfondo lino caldo accogliente */
+  --color-surface: #FFFFFF;          /* Bianco puro per schede e card */
+  --color-surface-soft: #F4F1EB;     /* Grigio caldo per sfondi secondari */
+  --color-primary: #E26D5C;          /* Corallo terracotta vivace (azione principale) */
+  --color-primary-hover: #D25847;    /* Corallo scuro al tocco/hover */
+  --color-primary-light: #FFF4F2;    /* Tinta corallo soffice per badge e sfondi attivi */
+  --color-secondary: #2D6A4F;        /* Verde bosco per accordo e stati online */
+  --color-secondary-light: #E3EFE9;  /* Menta chiaro per pillole positive */
+  --color-text-main: #2B2D42;        /* Testo scuro principale ad alto contrasto */
+  --color-text-muted: #6C757D;       /* Testo descrittivo grigio neutro */
+  --color-text-light: #8D99AE;       /* Etichette chiare e placeholder */
+  --color-border: #EFECE6;           /* Bordatura morbida per le card */
+  --color-border-input: #DCD7CD;     /* Bordo per i selettori radio a riposo */
+
+  /* Tipografia */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Raggi di Curvatura (Bordi Arrotondati) */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Ombreggiature Morbide */
+  --shadow-sm: 0 2px 6px rgba(43, 45, 66, 0.04);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-primary: 0 6px 18px rgba(226, 109, 92, 0.32);
+  --shadow-modal: 0 12px 36px rgba(43, 45, 66, 0.18);
+
+  /* Transizioni */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset Base per coerenza su tutti i browser */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Stile per le icone Google Material Symbols */
+.material-symbols-rounded {
+  font-size: 20px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ==========================================================================
+   === 2. CONTENITORE APPLICAZIONE (LAYOUT MOBILE-FIRST) ===
+   Mantiene la vista a 420px max centrata sullo schermo come un vero smartphone.
+   ========================================================================== */
+.app-viewport {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px 24px 18px;
+  position: relative;
+}
+
+/* ==========================================================================
+   === 3. HEADER SUPERIORE ===
+   Logo "Roommate", badge Smart Matching e avatar utente con indicatore online.
+   ========================================================================== */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  padding-top: 4px;
+}
+
+.header-icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+.header-icon-btn:active {
+  transform: scale(0.95);
+}
+
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.brand-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--color-text-main);
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.brand-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-top: 3px;
+  letter-spacing: 0.6px;
+}
+
+.header-avatar {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+.header-avatar:active {
+  transform: scale(0.95);
+}
+
+.avatar-status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 11px;
+  height: 11px;
+  background-color: var(--color-secondary);
+  border: 2px solid var(--color-surface);
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   === 4. BARRA DI NAVIGAZIONE SCHEDE (TABS FLUIDE) ===
+   Permette di passare con un tocco tra "Candidatura Gruppo" e "Test Domande".
+   ========================================================================== */
+.tab-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  background-color: #ECE8E1;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  margin-top: 10px;
+  margin-bottom: 16px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  transition: all var(--transition-normal);
+  user-select: none;
+}
+
+.tab-btn .material-symbols-rounded {
+  font-size: 18px;
+}
+
+.tab-btn.active {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-badge {
+  background-color: var(--color-text-main);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+/* Animazione di comparsa morbida delle schede */
+.tab-content {
+  display: none;
+  animation: fadeIn var(--transition-normal);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   === 5. COMPONENTI SCHEDA 1: CANDIDATURA DI GRUPPO ===
+   Card principale, selettore a pillola 2/3/4 persone, slot dinamici e vantaggi.
+   ========================================================================== */
+.group-hero-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow caldo decorativo sullo sfondo */
+.group-hero-card::after {
+  content: '';
+  position: absolute;
+  right: -25px;
+  bottom: -25px;
+  width: 110px;
+  height: 110px;
+  background: rgba(226, 109, 92, 0.06);
+  border-radius: var(--radius-full);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.badge-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+.badge-primary .material-symbols-rounded {
+  font-size: 15px;
+}
+
+.badge-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+.badge-secondary .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary);
+}
+
+.card-title {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  line-height: 1.35;
+  margin-top: 4px;
+}
+
+.card-description {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+/* Selettore Dimensione Gruppo (2, 3 o 4 persone) */
+.group-size-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background-color: var(--color-bg);
+  padding: 5px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.size-option-btn {
+  height: 42px;
+  border-radius: var(--radius-md);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #555B6E;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.size-option-btn:hover {
+  background-color: #FFF9F8;
+}
+.size-option-btn.active {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(226, 109, 92, 0.28);
+}
+
+/* Riga Anteprima Slot Gruppo */
+.slots-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+
+.slots-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slot-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  transition: transform var(--transition-fast);
+}
+.slot-avatar.user-slot {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(226, 109, 92, 0.3);
+}
+.slot-avatar.empty-slot {
+  background-color: var(--color-primary-light);
+  border: 2px dashed rgba(226, 109, 92, 0.45);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+.slot-avatar.empty-slot:hover {
+  transform: scale(1.08);
+  border-color: var(--color-primary);
+}
+
+/* Pulsante Primario Corallo con Glow */
+.btn-primary-action {
+  width: 100%;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  box-shadow: var(--shadow-primary);
+  transition: all var(--transition-fast);
+}
+.btn-primary-action:hover {
+  background-color: var(--color-primary-hover);
+}
+.btn-primary-action:active {
+  transform: scale(0.98);
+}
+
+/* Card Vantaggi Gruppo */
+.perks-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 16px 18px;
+  margin-top: 14px;
+  box-shadow: var(--shadow-card);
+}
+
+.perks-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+.perk-item .material-symbols-rounded {
+  color: var(--color-secondary);
+  font-size: 18px;
+}
+
+/* ==========================================================================
+   === 6. COMPONENTI SCHEDA 2: TEST DI COMPATIBILITÀ ===
+   Contatore risposte, stepper a 8 segmenti, card domande A/B e navigazione.
+   ========================================================================== */
+.quiz-header {
+  margin-bottom: 12px;
+}
+
+.quiz-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.quiz-title {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  line-height: 1.25;
+}
+
+.quiz-counter-pill {
+  background-color: var(--color-text-main);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.4px;
+}
+
+/* Stepper & Barra di Avanzamento a 8 Tacche */
+.stepper-info-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 12px;
+}
+
+.stepper-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stepper-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stepper-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary-light);
+  border: 1px solid rgba(226, 109, 92, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.stepper-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepper-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stepper-current-label {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--color-text-main);
+}
+
+.stepper-step-pill {
+  font-size: 10px;
+  font-weight: 800;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+}
+
+.stepper-subtext {
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.stepper-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+}
+.stepper-status-badge.pending {
+  background-color: #F0ECE6;
+  color: var(--color-text-muted);
+  border: 1px solid #DCD7CD;
+}
+.stepper-status-badge.done {
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary);
+  border: 1px solid rgba(45, 106, 79, 0.25);
+}
+
+/* Barre di progresso segmentate (8 tacche cliccabili) */
+.stepper-segments-bar {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+
+.segment-bar {
+  height: 8px;
+  flex: 1;
+  border-radius: var(--radius-full);
+  background-color: var(--color-border);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.segment-bar.active {
+  background-color: rgba(226, 109, 92, 0.35);
+  border: 1px solid var(--color-primary);
+}
+.segment-bar.completed {
+  background-color: var(--color-primary);
+}
+
+/* Card della Singola Domanda */
+.question-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+  display: none;
+  animation: fadeIn var(--transition-normal);
+}
+.question-card.active {
+  display: block;
+}
+
+.question-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+}
+.question-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+}
+
+.question-prompt {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+/* Opzioni di risposta (Radio Card interattive A/B) */
+.options-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-card {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  background-color: var(--color-surface);
+  transition: all var(--transition-fast);
+  user-select: none;
+  position: relative;
+}
+.option-card:hover {
+  border-color: rgba(226, 109, 92, 0.4);
+  background-color: #FFF9F8;
+}
+.option-card.selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+/* Input radio semantico nascosto visivamente */
+.semantic-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Cerchietto radio custom personalizzato */
+.radio-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-border-input);
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all var(--transition-fast);
+}
+.option-card.selected .radio-circle {
+  border-color: var(--color-primary);
+}
+
+.radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  display: none;
+  transition: transform var(--transition-fast);
+}
+.option-card.selected .radio-dot {
+  display: block;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.option-text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-headline {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  line-height: 1.3;
+}
+
+.option-subtext {
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-top: 3px;
+}
+
+/* Schermata di fine test (Completamento) */
+.completion-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  text-align: center;
+  display: none;
+  animation: fadeIn var(--transition-normal);
+  box-shadow: var(--shadow-card);
+}
+.completion-card.active {
+  display: block;
+}
+
+.completion-icon-wrapper {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+}
+.completion-icon-wrapper .material-symbols-rounded {
+  font-size: 32px;
+}
+
+.completion-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--color-text-main);
+}
+
+.completion-body {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+.completion-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* Controlli di Navigazione (Precedente / Avanti / Salta) */
+.wizard-nav-panel {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-buttons-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-nav-prev {
+  height: 46px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border-input);
+  background-color: var(--color-surface);
+  color: var(--color-text-light);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+.btn-nav-prev:not(:disabled) {
+  color: var(--color-text-main);
+  cursor: pointer;
+}
+.btn-nav-prev:not(:disabled):hover {
+  background-color: #F8F7F4;
+}
+.btn-nav-prev:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-nav-next {
+  height: 46px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(226, 109, 92, 0.28);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.btn-nav-next:hover {
+  background-color: var(--color-primary-hover);
+}
+.btn-nav-next:active {
+  transform: scale(0.98);
+}
+
+.skip-btn-wrapper {
+  text-align: center;
+}
+
+.btn-skip {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-text-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast);
+}
+.btn-skip:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   === 7. FOOTER FISSO & CTA MASTER ===
+   Pulsante in basso "Calcola Compatibilità & Trova Coinquilini".
+   ========================================================================== */
+.master-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-master-calculate {
+  width: 100%;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow-primary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.btn-master-calculate:hover {
+  background-color: var(--color-primary-hover);
+}
+.btn-master-calculate:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   === 8. POPUP, MODALI E TOAST NOTIFICHE ===
+   Componenti simpatici e compatti per notifiche, inviti e calcolo score.
+   ========================================================================== */
+/* Toast Notifica Fluttuante */
+.toast-popup {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background-color: #262626;
+  color: #FFFFFF;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 12.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-normal);
+  z-index: 1000;
+  white-space: nowrap;
+}
+.toast-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Backdrop Oscurato per le Finestre Modali */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(43, 45, 66, 0.5);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 999;
+  animation: fadeIn var(--transition-fast);
+}
+.modal-backdrop.active {
+  display: flex;
+}
+
+.modal-sheet {
+  background-color: var(--color-surface);
+  width: 100%;
+  max-width: 380px;
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-modal);
+  text-align: center;
+  position: relative;
+  animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-score-badge {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin: 8px 0;
+}
+
+.modal-features-box {
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  margin: 14px 0;
+  text-align: left;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.invite-input-field {
+  width: 100%;
+  height: 42px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  text-align: center;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 12px 0;
+  outline: none;
+}
+
+.modal-btn {
+  width: 100%;
+  height: 46px;
+  border-radius: var(--radius-full);
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.modal-btn.primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-primary);
+}
+.modal-btn.secondary {
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-main);
+  margin-top: 8px;
+}
